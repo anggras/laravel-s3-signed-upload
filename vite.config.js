@@ -8,12 +8,10 @@ export default defineConfig({
             host: 'localhost'
         }
     },
-    // root: path.resolve(__dirname, 'resources'),
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
-            root: path.resolve(__dirname, 'resources'),
         }),
     ],
     resolve: {
