@@ -61,7 +61,7 @@ class SampleController extends Controller
             ['starts-with', '$key', $fullFilePath],
         ];
 
-        $expires = '+2 hours';
+        $expires = '+5 minutes';
 
         $postObject = new \Aws\S3\PostObjectV4(
             $client,
