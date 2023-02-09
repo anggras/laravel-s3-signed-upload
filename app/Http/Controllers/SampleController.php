@@ -39,7 +39,6 @@ class SampleController extends Controller
 
         // Construct an array of conditions for policy
         $options = [
-            // ['acl' => 'public-read'],
             ['bucket' => $bucket],
             ['starts-with', '$key', $request->path],
         ];
