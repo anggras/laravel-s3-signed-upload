@@ -2,7 +2,6 @@ import './bootstrap';
 
 // Import our custom CSS
 import '../scss/styles.scss'
-import { v4 as uuidv4 } from 'uuid';
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
@@ -31,15 +30,9 @@ let submitOverride = async function () {
 let uploadFile = async function () {
     let fileInput = document.getElementById('file-input');
     let file = fileInput.files[0];
-    const filename = uuidv4();
-    let fileComponents = file.name.split('.');
-    const compLength = fileComponents.length;
-    const extension = compLength > 1 ? fileComponents.pop() : '';
-    const fullFilePath = compLength > 1 ? `${filename}.${extension}` : filename;
-    
     
     // Get signed url to upload the file
-    const response = await fetch('/sample/postupload/?path=' + fullFilePath);
+    const response = await fetch('/sample/postupload/?filename=' + file.name);
 
     if (!response.ok) {
         const message = `An error has occured: ${response.status}`;
@@ -54,7 +47,7 @@ let uploadFile = async function () {
         if (key != "key") {
             formData.append(key, result.inputs[key]);
         } else {
-            formData.append("key", fullFilePath);
+            formData.append("key", result.path);
         }
     });
     formData.append("file", file);
