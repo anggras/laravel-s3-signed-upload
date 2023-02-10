@@ -59,7 +59,7 @@ let uploadFile = async function () {
         
     });
     
-    return fullFilePath;
+    return result.path;
 }
 
 let enableForm = function (enable) {
